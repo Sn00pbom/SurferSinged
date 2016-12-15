@@ -26,8 +26,10 @@ namespace SurferSinged
     class Program
     {
 
-
+        public static List<WaitRun> wrlist = new List<WaitRun>();
+        
         private static AIHeroClient Me => Player.Instance;
+
         static void Main(string[] args)
         {
             Loading.OnLoadingComplete += Loading_OnLoadingComplete;
@@ -37,7 +39,7 @@ namespace SurferSinged
         {
             //asdf
             if (!Me.ChampionName.Equals("Singed")) return; //nullifies plugin if champion not singed
-
+            
             SingedSpell.loadSpells();
             
 
@@ -63,18 +65,18 @@ namespace SurferSinged
             //Handles buffered Q casting without stalling thread
             SingedSpell.checkQTogglePending();
             SingedSpell.setPoisonStatus();
-            
 
+            
+            for(int i = 0; i<wrlist.Capacity; i++)
+            {
+                WaitRun wr = wrlist[i];
+                wr.
+            }
 
 
 
         }
-        public static void waitRun(Action methodName, int waitSec, float startTime) //Requires method to run and wait time (in seconds)
-        {
-            
-            methodName();
-            // waitRun(() => Method1("Mystring"), 10, Game.Time); runs Method1 after 10 seconds from execution
-        }
+        
         
     }
 }
