@@ -63,12 +63,18 @@ namespace SurferSinged
             //Handles buffered Q casting without stalling thread
             SingedSpell.checkQTogglePending();
             SingedSpell.setPoisonStatus();
+            
 
-            
-            
+
+
 
         }
-        
+        public static void waitRun(Action methodName, int waitSec, float startTime) //Requires method to run and wait time (in seconds)
+        {
+            
+            methodName();
+            // waitRun(() => Method1("Mystring"), 10, Game.Time); runs Method1 after 10 seconds from execution
+        }
         
     }
 }

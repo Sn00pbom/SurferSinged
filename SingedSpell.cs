@@ -97,6 +97,7 @@ namespace SurferSinged
             Chat.Print(SingedSpell.E.Name + " casted!");
             toggleQCasting();
             bm(false);
+            Chat.Print(Game.Time);
 
         }
         private static void onCastSpellR(Object sender, EventArgs args)
