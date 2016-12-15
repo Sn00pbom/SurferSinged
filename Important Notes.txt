@@ -1,0 +1,10 @@
+Here is a text file to be used for notes so we can stop putting stuff in the useless discord chat
+
+Different Classes/Tasks
+
+Pathing/Bounds Classes
+Threat Levels
+Singed Spell Class
+Combat Class
+Driver(program.cs)
+
