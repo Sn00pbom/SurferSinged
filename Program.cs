@@ -45,8 +45,7 @@ namespace SurferSinged
 
             Game.OnTick += OnTick;
 
-            Spellbook.OnCastSpell += OnCastSpell;
-
+            
 
         }
         private static void OnTick(EventArgs args)
@@ -71,12 +70,6 @@ namespace SurferSinged
                 return false;
             }
         }
-        private static void OnCastSpell(Object sender, EventArgs args)
-        {
-            //DEBUG METHOD
-            Chat.Print("Spell Casted!");
-
-        }
-
+        
     }
 }

@@ -14,9 +14,9 @@ namespace SurferSinged
     {
         // S1 summoner 1 will always be ghost
         // S2 summoner 2 will always be teleport
-        private static Spell.Active Q, R, S1;
-        private static Spell.SimpleSkillshot W;
-        private static Spell.Targeted E, S2;
+        public static Spell.Active Q, R, S1;
+        public static Spell.SimpleSkillshot W;
+        public static Spell.Targeted E, S2;
 
         private Boolean poisonOn = false;
 
@@ -24,6 +24,7 @@ namespace SurferSinged
 
         public static void LoadSpells()
         {
+            //Initialize spell references and listeners
             Q = new Spell.Active(SpellSlot.Q);
             R = new Spell.Active(SpellSlot.R);
             S1 = new Spell.Active(SpellSlot.Summoner1);
@@ -31,11 +32,15 @@ namespace SurferSinged
             E = new Spell.Targeted(SpellSlot.E, 125); //125 is singed fling range
             S2 = new Spell.Targeted(SpellSlot.Summoner2, 1000000000); //Teleport: hopefully this range is large enough to be global Kappa
 
+            Spellbook.OnCastSpell += OnCastSpell;
+            Q.OnSpellCasted += OnCastSpellQ;
+            E.OnSpellCasted += OnCastSpellE;
         }
         public static void TryE()
         {
             //MUST BE RUN ON TICK TO GET TARGET
             var target = TargetSelector.GetTarget(E.Range, DamageType.Magical);
+            
             if (target != null && E.CanCast(target) == true)
             {
                 E.Cast();
@@ -43,11 +48,30 @@ namespace SurferSinged
         }
         public static void ToggleQ()
         {
+           
             while (Q.IsOnCooldown)
             {
                 //INFINITE LOOP to wait for GARENteed Q toggle
             }
             Q.Cast();
+
+        }
+        private static void OnCastSpell(Object sender, EventArgs args)
+        {
+            //Spell Cast Listener
+            Chat.Print("Spell Casted!");
+
+        }
+        private static void OnCastSpellQ(Object sender, EventArgs args)
+        {
+            //Q cast Listener
+            Chat.Print(SingedSpell.Q.Name + " casted!");
+
+        }
+        private static void OnCastSpellE(Object sender, EventArgs args)
+        {
+            //Q cast Listener
+            Chat.Print(SingedSpell.E.Name + " casted!");
 
         }
         public static void bm()
