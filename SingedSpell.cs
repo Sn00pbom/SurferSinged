@@ -30,13 +30,13 @@ namespace SurferSinged
             R = new Spell.Active(SpellSlot.R);
             S1 = new Spell.Active(SpellSlot.Summoner1);
             Chat.Print(SpellSlot.W.GetType());
-            //W = new Spell.Skillshot(SpellSlot.W);
+            W = new Spell.SimpleSkillshot(SpellSlot.W);
             E = new Spell.Targeted(SpellSlot.E, 125); //125 is singed fling range
             S2 = new Spell.Targeted(SpellSlot.Summoner2, 1000000000); //Teleport: hopefully this range is large enough to be global Kappa
 
             Spellbook.OnCastSpell += OnCastSpell;
             Q.OnSpellCasted += OnCastSpellQ;
-            //W.OnSpellCasted += OnCastSpellW;
+            W.OnSpellCasted += OnCastSpellW;
             E.OnSpellCasted += OnCastSpellE;
             R.OnSpellCasted += OnCastSpellR;
             S1.OnSpellCasted += OnCastSpellS1;
@@ -115,12 +115,12 @@ namespace SurferSinged
         }
         public static void bm(Boolean laugh)
         {
-            if(laugh == true)
-            {
-                Player.DoEmote(Emote.Laugh);
-            }
+            //if(laugh == true)
+            //{
+            //    Player.DoEmote(Emote.Laugh);
+            //}
             
-            Player.DoMasteryBadge();
+            //Player.DoMasteryBadge();
         }
     }
 }
