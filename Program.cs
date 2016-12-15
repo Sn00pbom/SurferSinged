@@ -36,9 +36,10 @@ namespace SurferSinged
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
             //asdf
-            if (!Me.ChampionName.Equals("Singed")) return;
+            if (!Me.ChampionName.Equals("Singed")) return; //nullifies plugin if champion not singed
 
-            SingedSpell.LoadSpells();
+            SingedSpell.loadSpells();
+            
 
             Chat.Print("African Singed Loaded!");
 
@@ -54,10 +55,9 @@ namespace SurferSinged
             if (Me.IsDead || isRecalling()) return;
 
             //Handles buffered Q casting without stalling thread
-            if(SingedSpell.castingQ == true && SingedSpell.Q.IsOnCooldown == false){
-                SingedSpell.Q.Cast();
-                SingedSpell.ToggleQCasting();
-            }
+            SingedSpell.checkQTogglePending();
+            SingedSpell.setPoisonStatus();
+            
 
         }
         static Boolean isRecalling()
