@@ -18,8 +18,9 @@ namespace SurferSinged
         public static Spell.SimpleSkillshot W;
         public static Spell.Targeted E, S2;
 
-        private Boolean poisonOn = false;
-
+        public static Boolean poisonActive = false;
+        public static Boolean castingQ = false;
+        
         
 
         public static void LoadSpells()
@@ -34,6 +35,7 @@ namespace SurferSinged
 
             Spellbook.OnCastSpell += OnCastSpell;
             Q.OnSpellCasted += OnCastSpellQ;
+            
             E.OnSpellCasted += OnCastSpellE;
         }
         public static void TryE()
@@ -41,19 +43,21 @@ namespace SurferSinged
             //MUST BE RUN ON TICK TO GET TARGET
             var target = TargetSelector.GetTarget(E.Range, DamageType.Magical);
             
-            if (target != null && E.CanCast(target) == true)
+            if (target != null && E.CanCast(target) == true && E.IsOnCooldown == false)
             {
                 E.Cast();
             }
         }
-        public static void ToggleQ()
+        public static void ToggleQCasting()
         {
-           
-            while (Q.IsOnCooldown)
+            
+            if(castingQ == false)
             {
-                //INFINITE LOOP to wait for GARENteed Q toggle
+                castingQ = true;
+            }else
+            {
+                castingQ = false;
             }
-            Q.Cast();
 
         }
         private static void OnCastSpell(Object sender, EventArgs args)
@@ -72,12 +76,16 @@ namespace SurferSinged
         {
             //Q cast Listener
             Chat.Print(SingedSpell.E.Name + " casted!");
+            bm(false);
 
         }
-        public static void bm()
+        public static void bm(Boolean laugh)
         {
+            if(laugh == true)
+            {
+                Player.DoEmote(Emote.Laugh);
+            }
             
-            Player.DoEmote(Emote.Laugh);
             Player.DoMasteryBadge();
         }
     }
