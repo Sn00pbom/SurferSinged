@@ -35,8 +35,11 @@ namespace SurferSinged
 
             Spellbook.OnCastSpell += OnCastSpell;
             Q.OnSpellCasted += OnCastSpellQ;
-            
+            W.OnSpellCasted += OnCastSpellW;
             E.OnSpellCasted += OnCastSpellE;
+            R.OnSpellCasted += OnCastSpellR;
+            S1.OnSpellCasted += OnCastSpellS1;
+            S2.OnSpellCasted += OnCastSpellS2;
         }
         public static void TryE()
         {
@@ -70,13 +73,43 @@ namespace SurferSinged
         {
             //Q cast Listener
             Chat.Print(SingedSpell.Q.Name + " casted!");
+            bm(true);
+
+        }
+        private static void OnCastSpellW(Object sender, EventArgs args)
+        {
+            //W cast Listener
+            Chat.Print(SingedSpell.W.Name + " casted!");
+            bm(true);
 
         }
         private static void OnCastSpellE(Object sender, EventArgs args)
         {
             //Q cast Listener
             Chat.Print(SingedSpell.E.Name + " casted!");
+            ToggleQCasting();
             bm(false);
+
+        }
+        private static void OnCastSpellR(Object sender, EventArgs args)
+        {
+            //R cast Listener
+            Chat.Print(SingedSpell.R.Name + " casted!");
+            bm(true);
+
+        }
+        private static void OnCastSpellS1(Object sender, EventArgs args)
+        {
+            //Summoner1 cast Listener
+            Chat.Print(SingedSpell.S1.Name + " casted!");
+            bm(true);
+
+        }
+        private static void OnCastSpellS2(Object sender, EventArgs args)
+        {
+            //Summoner2 cast Listener
+            Chat.Print(SingedSpell.S2.Name + " casted!");
+            bm(true);
 
         }
         public static void bm(Boolean laugh)
