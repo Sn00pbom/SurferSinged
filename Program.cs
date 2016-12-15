@@ -53,7 +53,11 @@ namespace SurferSinged
 
             if (Me.IsDead || isRecalling()) return;
 
-
+            //Handles buffered Q casting without stalling thread
+            if(SingedSpell.castingQ == true && SingedSpell.Q.IsOnCooldown == false){
+                SingedSpell.Q.Cast();
+                SingedSpell.ToggleQCasting();
+            }
 
         }
         static Boolean isRecalling()
