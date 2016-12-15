@@ -131,6 +131,20 @@ namespace SurferSinged
                 SingedSpell.poisonActive = false;
             }
         }
+        public static Boolean isRecalling()
+        {
+            //ALL BUFFS, POSITIVE, NEGATIVE, OR NEUTRAL COUNT AS BUFFS
+            if (Me.HasBuff("Recall"))
+            {
+                
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static void bm(Boolean laugh)
         {
             //if(laugh == true)

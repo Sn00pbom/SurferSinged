@@ -51,29 +51,24 @@ namespace SurferSinged
         }
         private static void OnTick(EventArgs args)
         {
+            //recall debug
+            if (SingedSpell.isRecalling())
+            {
+                Chat.Print("Recalling...");
+            }
 
-            if (Me.IsDead || isRecalling()) return;
+
+            if (Me.IsDead || SingedSpell.isRecalling()) return; //IGNORES REST OF CODE ON TICK WHEN DEAD OR RECALLING
 
             //Handles buffered Q casting without stalling thread
             SingedSpell.checkQTogglePending();
             SingedSpell.setPoisonStatus();
+
+            
             
 
         }
-        static Boolean isRecalling()
-        {
-            //ALL BUFFS, POSITIVE, NEGATIVE, OR NEUTRAL COUNT AS BUFFS
-            if (Me.HasBuff("Recall"))
-            {
-                Chat.Print("Recalling...");
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
-        }
+        
         
     }
 }
