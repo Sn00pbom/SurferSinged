@@ -20,6 +20,8 @@ namespace SurferSinged
 
         private Boolean poisonOn = false;
 
+        
+
         public static void LoadSpells()
         {
             Q = new Spell.Active(SpellSlot.Q);
@@ -50,6 +52,7 @@ namespace SurferSinged
         }
         public static void bm()
         {
+            
             Player.DoEmote(Emote.Laugh);
             Player.DoMasteryBadge();
         }
