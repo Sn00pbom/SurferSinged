@@ -1,5 +1,6 @@
-Surfer Singed
+S u r f e r S i n g e d
 -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
 Automated Proxy Singed Script for League of Legends
 
 -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
