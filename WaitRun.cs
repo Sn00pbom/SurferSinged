@@ -48,6 +48,7 @@ namespace SurferSinged
         {
             for (int i = 0; i < wrl.Capacity; i++)
             {
+
                 WaitRun wr = wrl[i];
                 if (wr != null)
                 {
@@ -61,7 +62,9 @@ namespace SurferSinged
                             wr.elapsed = cTime - wr.startTime;
                             if (wr.elapsed >= wr.waitSec)
                             {
+                                wr.waiting = false;
                                 wr.waitRun();
+                                
                             }
                         }
                         
