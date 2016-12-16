@@ -43,7 +43,8 @@ namespace SurferSinged
             SingedSpell.loadSpells();
             
 
-            Chat.Print("African Singed Loaded!");
+            Chat.Print("Surfer Singed Loaded!");
+            Chat.Print("Debug Version. W crashes the game");
 
 
             Game.OnTick += OnTick;

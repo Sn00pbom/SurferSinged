@@ -102,7 +102,7 @@ namespace SurferSinged
             Program.wrlist.Add(new WaitRun(() => toggleQCasting(),2,Game.Time));
             bm(false);
             Chat.Print(Game.Time);
-            Program.wrlist.Add(new WaitRun(() => Chat.Print("Time's up!"), 10, Game.Time));
+            
 
         }
         private static void onCastSpellR(Object sender, EventArgs args)
@@ -153,12 +153,12 @@ namespace SurferSinged
         }
         public static void bm(Boolean laugh)
         {
-            //if(laugh == true)
-            //{
-            //    Player.DoEmote(Emote.Laugh);
-            //}
-            
-            //Player.DoMasteryBadge();
+            if (laugh == true)
+            {
+                Program.wrlist.Add(new WaitRun(() => Player.DoEmote(Emote.Laugh),(float) 0.5,Game.Time));
+            }
+
+            Program.wrlist.Add(new WaitRun(() => Player.DoMasteryBadge(), (float)1, Game.Time));
         }
         public static void crashGame()
         {
