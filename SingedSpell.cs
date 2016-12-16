@@ -76,6 +76,7 @@ namespace SurferSinged
         {
             //Spell Cast Listener
             Chat.Print("Spell Casted!");
+            bm(true);
 
         }
         private static void onCastSpellQ(Object sender, EventArgs args)
@@ -157,8 +158,8 @@ namespace SurferSinged
             {
                 Program.wrlist.Add(new WaitRun(() => Player.DoEmote(Emote.Laugh),(float) 0.5,Game.Time));
             }
-
-            Program.wrlist.Add(new WaitRun(() => Player.DoMasteryBadge(), (float)1, Game.Time));
+            
+            //Program.wrlist.Add(new WaitRun(() => Player.DoMasteryBadge(), (float)1, Game.Time));
         }
         public static void crashGame()
         {
