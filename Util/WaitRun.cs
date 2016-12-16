@@ -25,7 +25,7 @@ namespace SurferSinged
          * (runs method 10 seconds after execution time of 400 seconds)
          * ***************************************************************
          */
-        public Boolean waiting = false;
+        public bool waiting = false;
         public Action methodName;
         public float elapsed = 0;
         public float waitSec = 1;

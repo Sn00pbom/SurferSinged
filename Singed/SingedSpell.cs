@@ -18,8 +18,8 @@ namespace SurferSinged
         public static Spell.SimpleSkillshot W;
         public static Spell.Targeted E, S2;
 
-        public static Boolean poisonActive = false;
-        public static Boolean castingQ = false;
+        public static bool poisonActive = false;
+        public static bool castingQ = false;
 
         private static AIHeroClient Me => Player.Instance;
 
@@ -155,7 +155,7 @@ namespace SurferSinged
                 SingedSpell.poisonActive = false;
             }
         }
-        public static Boolean isRecalling()
+        public static bool isRecalling()
         {
             //ALL BUFFS, POSITIVE, NEGATIVE, OR NEUTRAL COUNT AS BUFFS
             if (Me.HasBuff("Recall"))
@@ -169,7 +169,7 @@ namespace SurferSinged
                 return false;
             }
         }
-        public static void bm(Boolean laugh)
+        public static void bm(bool laugh)
         {
             if (laugh == true)
             {

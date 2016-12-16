@@ -24,7 +24,7 @@ namespace SurferSinged
         private float dx { get; set; }
         private float dy { get; set; }
 
-        public Boolean equals(Bound bound)
+        public bool equals(Bound bound)//comparing two bounds 
         {
             
             if (bound.ax == ax && bound.ay == ay && bound.bx == bx && bound.by == by && bound.cx == cx && bound.cy == cy && bound.dx == dx && bound.dy == dy)
@@ -36,16 +36,16 @@ namespace SurferSinged
                 
             }
         }
-        public Boolean isHeroInside(AIHeroClient p)
+        public bool isHeroInside(AIHeroClient p)
         {
             SharpDX.Vector3 vec = p.ServerPosition;
             float vX = vec.X;
             float vY = vec.Y;
             LinearEquation le = new LinearEquation();
-            Boolean w1 = false;
-            Boolean w2 = false;
-            Boolean w3 = false;
-            Boolean w4 = false;
+            bool w1 = false;
+            bool w2 = false;
+            bool w3 = false;
+            bool w4 = false;
             
             /*
              * w1
