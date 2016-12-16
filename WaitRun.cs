@@ -46,35 +46,45 @@ namespace SurferSinged
         }
         public static void updateTick(List<WaitRun> wrl, float cTime) //cTime(Current Time)
         {
+            //ArgumentOutOfRangeException
             for (int i = 0; i < wrl.Capacity; i++)
             {
-
-                WaitRun wr = wrl[i];
-                if (wr != null)
+                try
                 {
-                    if (wr.waiting == false)
+                    WaitRun wr = wrl[i];
+                    if (wr != null)
                     {
-                        wrl.Remove(wr);
-                    }else
-                    {
-                        if(!(cTime < wr.startTime))
+                        if (wr.waiting == false)
                         {
-                            wr.elapsed = cTime - wr.startTime;
-                            if (wr.elapsed >= wr.waitSec)
-                            {
-                                wr.waiting = false;
-                                wr.waitRun();
-                                
-                            }
+                            wrl.Remove(wr);
                         }
-                        
-                        
+                        else
+                        {
+                            if (!(cTime < wr.startTime))
+                            {
+                                wr.elapsed = cTime - wr.startTime;
+                                if (wr.elapsed >= wr.waitSec)
+                                {
+                                    wr.waiting = false;
+                                    wr.waitRun();
+
+                                }
+                            }
+
+
+                        }
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
-                else
+                catch(ArgumentOutOfRangeException e)
                 {
                     break;
                 }
+
+                
             }
         }
         
