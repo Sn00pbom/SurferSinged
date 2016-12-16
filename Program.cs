@@ -48,7 +48,7 @@ namespace SurferSinged
 
 
             Game.OnTick += OnTick;
-            //hi
+            
 
             
 
@@ -56,11 +56,11 @@ namespace SurferSinged
         private static void OnTick(EventArgs args)
         {
             //recall debug
-            if (SingedSpell.isRecalling())
-            {
-                Chat.Print("Recalling...");
-            }
-
+            //if (SingedSpell.isRecalling())
+            //{
+            //    Chat.Print("Recalling...");
+            //}
+            
 
             if (Me.IsDead || SingedSpell.isRecalling()) return; //IGNORES REST OF CODE ON TICK WHEN DEAD OR RECALLING
 
