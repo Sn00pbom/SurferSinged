@@ -27,5 +27,17 @@ namespace SurferSinged
             SharpDX.Vector3 newvec = new SharpDX.Vector3(newX, newY, 0);
             Player.IssueOrder(GameObjectOrder.MoveTo, newvec);
         }
+        public static void moveTo(AIHeroClient p) //Absolute Movement
+        {
+
+            SharpDX.Vector3 newvec = p.Position;
+            Player.IssueOrder(GameObjectOrder.MoveTo, newvec);
+        }
+        public static void moveTo(Obj_AI_Minion p) //Absolute Movement
+        {
+
+            SharpDX.Vector3 newvec = p.Position;
+            Player.IssueOrder(GameObjectOrder.MoveTo, newvec);
+        }
     }
 }

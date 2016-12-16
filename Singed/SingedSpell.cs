@@ -19,7 +19,6 @@ namespace SurferSinged
         public static Spell.Targeted E, S2;
 
         public static bool poisonActive = false;
-        public static bool castingQ = false;
 
         private static AIHeroClient Me => Player.Instance;
 
@@ -56,23 +55,12 @@ namespace SurferSinged
                 E.Cast();
             }
         }
-        public static void toggleQCasting()
+        public static void checkQTogglePending() // ON TICK
         {
-            
-            if(castingQ == false)
-            {
-                castingQ = true;
-            }else
-            {
-                castingQ = false;
-            }
-
-        }public static void checkQTogglePending() // ON TICK
-        {
-            if (castingQ == true && Q.IsOnCooldown == false)
+            if (SingedAttack.castingQ == true && Q.IsOnCooldown == false)
             {
                 Q.Cast();
-                toggleQCasting();
+                SingedAttack.toggleQCasting();
             }
         }
         //private static void onCastSpell(Object sender, EventArgs args)
@@ -117,9 +105,8 @@ namespace SurferSinged
         {
             //Q cast Listener
             Chat.Print(SingedSpell.E.Name + " casted!");
-            Program.wrlist.Add(new WaitRun(() => toggleQCasting(),2,Game.Time));
             bm(false);
-            Chat.Print(Game.Time);
+            
             
 
         }
@@ -160,9 +147,7 @@ namespace SurferSinged
             //ALL BUFFS, POSITIVE, NEGATIVE, OR NEUTRAL COUNT AS BUFFS
             if (Me.HasBuff("Recall"))
             {
-                
                 return true;
-
             }
             else
             {
