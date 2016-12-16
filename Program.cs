@@ -21,6 +21,9 @@ namespace SurferSinged
      * test summoner spells (ESPECIALLY TELE)
      * TEST AUTOLAUGH AND MASTERY FROM SingedSpell Class
      * 
+     * Obj_AI_Minion
+     * AIHeroClient
+     * 
      */
 
     class Program

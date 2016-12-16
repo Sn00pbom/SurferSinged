@@ -16,8 +16,10 @@ namespace SurferSinged
         public static double z;
         public static void move()
         {
+            //Player.Instance.ServerPosition.
             SharpDX.Vector3 vec = Player.Instance.ServerPosition;
-            SharpDX.Vector3 newvec = new SharpDX.Vector3(vec.X+100, vec.Y+100, vec.Z +100);
+            int shift = 100;
+            SharpDX.Vector3 newvec = new SharpDX.Vector3(vec.X+shift, vec.Y+shift, vec.Z);
             Player.IssueOrder(GameObjectOrder.MoveTo, newvec);
             //Player.Instance.Position;
         }

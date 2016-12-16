@@ -87,7 +87,6 @@ namespace SurferSinged
             if(Player.HasBuff("Poison Trail"))
             {
                 poisonActive = true;
-                SingedMove.move();
             }
         }
         private static void onBuffRemove(Object sender, EventArgs args)
