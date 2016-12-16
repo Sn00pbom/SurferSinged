@@ -53,9 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI Logic\Threat.cs" />
-    <Compile Include="Pathing\Bound.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pathing\Region.cs" />
     <Compile Include="Singed\SingedMove.cs" />
     <Compile Include="Singed\SingedSpell.cs" />
     <Compile Include="SurferSingedMenu.cs" />

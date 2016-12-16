@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace SurferSinged
 {
-    class Bound
+    class Region
     {
-        
+
         private float ax { get; set; }
         private float ay { get; set; }
 
@@ -24,16 +23,17 @@ namespace SurferSinged
         private float dx { get; set; }
         private float dy { get; set; }
 
-        public bool equals(Bound bound)//comparing two bounds 
+        public bool equals(Region bound)//comparing two bounds 
         {
-            
+
             if (bound.ax == ax && bound.ay == ay && bound.bx == bx && bound.by == by && bound.cx == cx && bound.cy == cy && bound.dx == dx && bound.dy == dy)
             {
                 return true;
-            }else
+            }
+            else
             {
                 return false;
-                
+
             }
         }
         public bool isHeroInside(AIHeroClient p)
@@ -46,7 +46,7 @@ namespace SurferSinged
             bool w2 = false;
             bool w3 = false;
             bool w4 = false;
-            
+
             /*
              * w1
              * <+
@@ -61,13 +61,14 @@ namespace SurferSinged
              * >-
              * <+
              */
-            if((le.getLinearInequality(ax,ay,bx,by,vX,vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(ax,ay,bx,by) == LinearEquation.State.POSITIVE) || 
+            if ((le.getLinearInequality(ax, ay, bx, by, vX, vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(ax, ay, bx, by) == LinearEquation.State.POSITIVE) ||
                 (le.getLinearInequality(ax, ay, bx, by, vX, vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(ax, ay, bx, by) == LinearEquation.State.NEGATIVE) ||
                 (le.getLinearInequality(ax, ay, bx, by, vX, vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(ax, ay, bx, by) == LinearEquation.State.ZERO) ||
                 (le.getLinearInequality(ax, ay, bx, by, vX, vY) == LinearEquation.Inequality.EQUAL))
             {
                 w1 = true;
-            }else
+            }
+            else
             {
                 return false;
             }
@@ -79,7 +80,8 @@ namespace SurferSinged
                 (le.getLinearInequality(bx, by, cx, cy, vX, vY) == LinearEquation.Inequality.EQUAL))
             {
                 w2 = true;
-            }else
+            }
+            else
             {
                 return false;
             }
@@ -91,7 +93,8 @@ namespace SurferSinged
                 (le.getLinearInequality(cx, cy, dx, dy, vX, vY) == LinearEquation.Inequality.EQUAL))
             {
                 w3 = true;
-            }else
+            }
+            else
             {
                 return false;
             }
@@ -103,7 +106,8 @@ namespace SurferSinged
                 (le.getLinearInequality(dx, dy, ax, ay, vX, vY) == LinearEquation.Inequality.EQUAL))
             {
                 w4 = true;
-            }else
+            }
+            else
             {
                 return false;
             }
@@ -113,7 +117,7 @@ namespace SurferSinged
                 return true;
             }
             return false;
-            
+
 
         }
 
