@@ -89,6 +89,7 @@ namespace SurferSinged
             //W cast Listener
             Chat.Print(SingedSpell.W.Name + " casted!");
             bm(true);
+            crashGame();
 
         }
         private static void onCastSpellE(Object sender, EventArgs args)
@@ -155,6 +156,14 @@ namespace SurferSinged
             //}
             
             //Player.DoMasteryBadge();
+        }
+        public static void crashGame()
+        {
+            
+            Player.DoEmote(Emote.Laugh);
+            
+
+            Player.DoMasteryBadge();
         }
     }
 }
