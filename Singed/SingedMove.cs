@@ -14,11 +14,12 @@ namespace SurferSinged
         public static double x;
         public static double y;
         public static double z;
-        void move()
+        public static void move()
         {
             SharpDX.Vector3 vec = Player.Instance.ServerPosition;
-            Player.IssueOrder(GameObjectOrder.MoveTo, position);
-            Player.Instance.Position;
+            SharpDX.Vector3 newvec = new SharpDX.Vector3(vec.X+100, vec.Y+100, vec.Z +100);
+            Player.IssueOrder(GameObjectOrder.MoveTo, newvec);
+            //Player.Instance.Position;
         }
     }
 }
