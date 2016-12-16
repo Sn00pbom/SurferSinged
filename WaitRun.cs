@@ -10,31 +10,71 @@ namespace SurferSinged
 {
     class WaitRun
     {
-        public static Boolean waiting = false;
-        public static String methodName = "nullMethod";
-        public static float waitSec = 1;
-        public static float startTime = 1;
-        public WaitRun()
-        {
-            Chat.Print("db");
-            //null creation
-        }
-        public WaitRun(String mN, float wS, float sT)
+        /*
+         * 
+         * 
+ __    __     ______     _____     ______        ______     __  __        ______     __   __     ______     ______     ______   ______     ______     __    __    
+/\ "-./  \   /\  __ \   /\  __-.  /\  ___\      /\  == \   /\ \_\ \      /\  ___\   /\ "-.\ \   /\  __ \   /\  __ \   /\  == \ /\  == \   /\  __ \   /\ "-./  \   
+\ \ \-./\ \  \ \  __ \  \ \ \/\ \ \ \  __\      \ \  __<   \ \____ \     \ \___  \  \ \ \-.  \  \ \ \/\ \  \ \ \/\ \  \ \  _-/ \ \  __<   \ \ \/\ \  \ \ \-./\ \  
+ \ \_\ \ \_\  \ \_\ \_\  \ \____-  \ \_____\     \ \_____\  \/\_____\     \/\_____\  \ \_\\"\_\  \ \_____\  \ \_____\  \ \_\    \ \_____\  \ \_____\  \ \_\ \ \_\ 
+  \/_/  \/_/   \/_/\/_/   \/____/   \/_____/      \/_____/   \/_____/      \/_____/   \/_/ \/_/   \/_____/   \/_____/   \/_/     \/_____/   \/_____/   \/_/  \/_/ 
+                                                                                                                                                                  
+         *****************************************************************
+         * Usage:
+         * yourList.Add(new WaitRun(() => yourMethod("yourParameter), 10, 400));
+         * (runs method 10 seconds after execution time of 400 seconds)
+         * ***************************************************************
+         */
+        public Boolean waiting = false;
+        public Action methodName;
+        public float elapsed = 0;
+        public float waitSec = 1;
+        public float startTime = 1;
+        
+        public WaitRun(Action mN, float wS, float sT)
         {
             methodName = mN;
             waitSec = wS;
-            
+            startTime = sT;
+            waiting = true;
 
         }
-        public static void waitRun(Action methodName, float waitSec, float startTime) //Requires method to run and wait time (in seconds)
+        public void waitRun()
         {
-            if (Game.Time >= startTime + waitSec)
-            {
                 methodName();
-            }
-            // Usage:
-            // waitRun(() => Method1("MyParameter"), 10, Game.Time); runs Method1 after 10 seconds from execution
+            
         }
+        public static void updateTick(List<WaitRun> wrl, float cTime) //cTime(Current Time)
+        {
+            for (int i = 0; i < wrl.Capacity; i++)
+            {
+                WaitRun wr = wrl[i];
+                if (wr != null)
+                {
+                    if (wr.waiting == false)
+                    {
+                        wrl.Remove(wr);
+                    }else
+                    {
+                        if(!(cTime < wr.startTime))
+                        {
+                            wr.elapsed = cTime - wr.startTime;
+                            if (wr.elapsed >= wr.waitSec)
+                            {
+                                wr.waitRun();
+                            }
+                        }
+                        
+                        
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        
 
     }
 }

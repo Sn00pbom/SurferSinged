@@ -66,13 +66,9 @@ namespace SurferSinged
             SingedSpell.checkQTogglePending();
             SingedSpell.setPoisonStatus();
 
-            
-            for(int i = 0; i<wrlist.Capacity; i++)
-            {
-                WaitRun wr = wrlist[i];
-                wr.
-            }
 
+            WaitRun.updateTick(wrlist, Game.Time);
+            
 
 
         }
