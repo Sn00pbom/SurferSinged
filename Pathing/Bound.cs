@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace SurferSinged.Pathing
+namespace SurferSinged
 {
     class Bound
     {
@@ -36,13 +36,86 @@ namespace SurferSinged.Pathing
                 
             }
         }
-        //public Boolean checkInside(AIHeroClient p)
-        //{
-        //    SharpDX.Vector3 vec = p.ServerPosition;
-        //    float vX = vec.X;
-        //    float vY = vec.Y;
+        public Boolean isHeroInside(AIHeroClient p)
+        {
+            SharpDX.Vector3 vec = p.ServerPosition;
+            float vX = vec.X;
+            float vY = vec.Y;
+            LinearEquation le = new LinearEquation();
+            Boolean w1 = false;
+            Boolean w2 = false;
+            Boolean w3 = false;
+            Boolean w4 = false;
             
-        //}
-        
+            /*
+             * w1
+             * <+
+             * <-
+             * w2
+             * <-
+             * >+
+             * w3
+             * >+
+             * >-
+             * w4
+             * >-
+             * <+
+             */
+            if((le.getLinearInequality(ax,ay,bx,by,vX,vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(ax,ay,bx,by) == LinearEquation.State.POSITIVE) || 
+                (le.getLinearInequality(ax, ay, bx, by, vX, vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(ax, ay, bx, by) == LinearEquation.State.NEGATIVE) ||
+                (le.getLinearInequality(ax, ay, bx, by, vX, vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(ax, ay, bx, by) == LinearEquation.State.ZERO) ||
+                (le.getLinearInequality(ax, ay, bx, by, vX, vY) == LinearEquation.Inequality.EQUAL))
+            {
+                w1 = true;
+            }else
+            {
+                return false;
+            }
+
+
+            if ((le.getLinearInequality(bx, by, cx, cy, vX, vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(bx, by, cx, cy) == LinearEquation.State.NEGATIVE) ||
+                (le.getLinearInequality(bx, by, cx, cy, vX, vY) == LinearEquation.Inequality.GREATERTHAN && le.getMState(bx, by, cx, cy) == LinearEquation.State.POSITIVE) ||
+                (le.getLinearInequality(bx, by, cx, cy, vX, vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(bx, by, cx, cy) == LinearEquation.State.UNDEFINED) ||
+                (le.getLinearInequality(bx, by, cx, cy, vX, vY) == LinearEquation.Inequality.EQUAL))
+            {
+                w2 = true;
+            }else
+            {
+                return false;
+            }
+
+
+            if ((le.getLinearInequality(cx, cy, dx, dy, vX, vY) == LinearEquation.Inequality.GREATERTHAN && le.getMState(cx, cy, dx, dy) == LinearEquation.State.POSITIVE) ||
+                (le.getLinearInequality(cx, cy, dx, dy, vX, vY) == LinearEquation.Inequality.GREATERTHAN && le.getMState(cx, cy, dx, dy) == LinearEquation.State.NEGATIVE) ||
+                (le.getLinearInequality(cx, cy, dx, dy, vX, vY) == LinearEquation.Inequality.GREATERTHAN && le.getMState(cx, cy, dx, dy) == LinearEquation.State.ZERO) ||
+                (le.getLinearInequality(cx, cy, dx, dy, vX, vY) == LinearEquation.Inequality.EQUAL))
+            {
+                w3 = true;
+            }else
+            {
+                return false;
+            }
+
+
+            if ((le.getLinearInequality(dx, dy, ax, ay, vX, vY) == LinearEquation.Inequality.GREATERTHAN && le.getMState(dx, dy, ax, ay) == LinearEquation.State.NEGATIVE) ||
+                (le.getLinearInequality(dx, dy, ax, ay, vX, vY) == LinearEquation.Inequality.LESSTHAN && le.getMState(dx, dy, ax, ay) == LinearEquation.State.POSITIVE) ||
+                (le.getLinearInequality(dx, dy, ax, ay, vX, vY) == LinearEquation.Inequality.GREATERTHAN && le.getMState(dx, dy, ax, ay) == LinearEquation.State.UNDEFINED) ||
+                (le.getLinearInequality(dx, dy, ax, ay, vX, vY) == LinearEquation.Inequality.EQUAL))
+            {
+                w4 = true;
+            }else
+            {
+                return false;
+            }
+
+            if (w1 == true && w2 == true && w3 == true && w4 == true)
+            {
+                return true;
+            }
+
+            return false; //TODO dont forget this
+
+        }
+
     }
 }

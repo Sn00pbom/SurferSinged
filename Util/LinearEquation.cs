@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SurferSinged.Util
+namespace SurferSinged
 {
     class LinearEquation
     {
-        enum LeftSide
+        //Sn00pbom
+        public enum LeftSide
         {
             X,
             Y
@@ -16,12 +17,41 @@ namespace SurferSinged.Util
         public enum Inequality
         {
             GREATERTHAN,
-            EQUAL,
-            LESSTHAN
+            LESSTHAN,
+            EQUAL
+        };
+        public enum State
+        {
+            POSITIVE,
+            NEGATIVE,
+            ZERO,
+            UNDEFINED 
         };
 
         private LeftSide lSide { set; get; }
 
+        public State getMState(float x1, float y1, float x2, float y2)
+        {
+            float output = ((y2 - y1) / (x2 - x1));
+            if((x2 - x1) == 0)
+            {
+                return State.UNDEFINED;
+            }else if((y2 - y1) == 0)
+            {
+                return State.UNDEFINED;
+            }else if(output < 0)
+            {
+                return State.NEGATIVE;
+            }else if(output > 0)
+            {
+                return State.POSITIVE;
+            }
+            return State.ZERO;
+        }
+        public float getB(float x1, float y1, float x2, float y2)
+        {
+            return (y2 - (((x2 * y2) - (x2 * y1)) / (x2 - x1)));
+        }
         public Inequality getLinearInequality(float x1, float y1, float x2, float y2, float newx, float newy)
         {
 
