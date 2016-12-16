@@ -36,9 +36,9 @@ namespace SurferSinged
 
             }
         }
-        public bool isHeroInside(AIHeroClient p)
+        public bool isVectorInside(SharpDX.Vector3 vec)
         {
-            SharpDX.Vector3 vec = p.ServerPosition;
+            //SharpDX.Vector3 vec = p.ServerPosition;
             float vX = vec.X;
             float vY = vec.Y;
             LinearEquation le = new LinearEquation();
