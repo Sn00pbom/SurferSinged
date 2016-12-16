@@ -28,11 +28,12 @@ namespace SurferSinged
             //Initialize spell references and listeners
             Q = new Spell.Active(SpellSlot.Q);
             R = new Spell.Active(SpellSlot.R);
-            S1 = new Spell.Active(SpellSlot.Summoner2);
+            S1 = new Spell.Active(SpellSlot.Summoner1);
             W = new Spell.SimpleSkillshot(SpellSlot.W);
             E = new Spell.Targeted(SpellSlot.E, 125); //125 is singed fling range
-            S2 = new Spell.Targeted(SpellSlot.Summoner1, 1000000000); //Teleport: hopefully this range is large enough to be global Kappa
+            S2 = new Spell.Targeted(SpellSlot.Summoner2, 1000000000); //Teleport: hopefully this range is large enough to be global Kappa
 
+            
             Spellbook.OnCastSpell += onCastSpell;
             Q.OnSpellCasted += onCastSpellQ;
             W.OnSpellCasted += onCastSpellW;
@@ -40,6 +41,7 @@ namespace SurferSinged
             R.OnSpellCasted += onCastSpellR;
             S1.OnSpellCasted += onCastSpellS1;
             S2.OnSpellCasted += onCastSpellS2;
+            
         }
         public static void tryE()
         {
@@ -84,6 +86,7 @@ namespace SurferSinged
             bm(true);
 
         }
+
         private static void onCastSpellW(Object sender, EventArgs args)
         {
             //W cast Listener
@@ -96,7 +99,7 @@ namespace SurferSinged
         {
             //Q cast Listener
             Chat.Print(SingedSpell.E.Name + " casted!");
-            toggleQCasting();
+            Program.wrlist.Add(new WaitRun(() => toggleQCasting(),2,Game.Time));
             bm(false);
             Chat.Print(Game.Time);
             Program.wrlist.Add(new WaitRun(() => Chat.Print("Time's up!"), 10, Game.Time));
