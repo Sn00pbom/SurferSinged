@@ -44,7 +44,7 @@ namespace SurferSinged
             if (!Me.ChampionName.Equals("Singed")) return; //nullifies plugin if champion not singed
             
             SingedSpell.loadSpells();
-            
+            SurferSingedMenu.createMenu();
 
             Chat.Print("Surfer Singed Loaded!");
             Chat.Print("Debug Version. W crashes the game");

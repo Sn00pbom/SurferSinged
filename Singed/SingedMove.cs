@@ -11,17 +11,21 @@ namespace SurferSinged
     class SingedMove
     {
         private static AIHeroClient Me => Player.Instance;
-        public static double x;
-        public static double y;
-        public static double z;
-        public static void move()
+        
+        
+
+        public static void moveChange(float changeX, float changeY) //Relative Movement
         {
-            //Player.Instance.ServerPosition.
-            SharpDX.Vector3 vec = Player.Instance.ServerPosition;
-            int shift = 100;
-            SharpDX.Vector3 newvec = new SharpDX.Vector3(vec.X+shift, vec.Y+shift, vec.Z);
+            SharpDX.Vector3 vec = Me.ServerPosition;
+            SharpDX.Vector3 newvec = new SharpDX.Vector3(vec.X+changeX, vec.Y+changeY, vec.Z);
             Player.IssueOrder(GameObjectOrder.MoveTo, newvec);
-            //Player.Instance.Position;
+            
+            
+        }
+        public static void moveTo(float newX, float newY) //Absolute Movement
+        {
+            SharpDX.Vector3 newvec = new SharpDX.Vector3(newX, newY, 0);
+            Player.IssueOrder(GameObjectOrder.MoveTo, newvec);
         }
     }
 }
