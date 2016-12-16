@@ -46,7 +46,7 @@ namespace SurferSinged
         }
         public static void updateTick(List<WaitRun> wrl, float cTime) //cTime(Current Time)
         {
-            //ArgumentOutOfRangeException
+            
             for (int i = 0; i < wrl.Capacity; i++)
             {
                 try

@@ -34,14 +34,17 @@ namespace SurferSinged
             S2 = new Spell.Targeted(SpellSlot.Summoner2, 1000000000); //Teleport: hopefully this range is large enough to be global Kappa
 
             
-            Spellbook.OnCastSpell += onCastSpell;
-            Q.OnSpellCasted += onCastSpellQ;
+            //Spellbook.OnCastSpell += onCastSpell;
+            //Q.OnSpellCasted += onCastSpellQ;
             W.OnSpellCasted += onCastSpellW;
             E.OnSpellCasted += onCastSpellE;
             R.OnSpellCasted += onCastSpellR;
             S1.OnSpellCasted += onCastSpellS1;
             S2.OnSpellCasted += onCastSpellS2;
-            
+
+            Player.OnBuffGain += onBuffAdd;
+            Player.OnBuffLose += onBuffRemove;
+
         }
         public static void tryE()
         {
@@ -72,28 +75,42 @@ namespace SurferSinged
                 toggleQCasting();
             }
         }
-        private static void onCastSpell(Object sender, EventArgs args)
-        {
-            //Spell Cast Listener
-            Chat.Print("Spell Casted!");
-            bm(true);
+        //private static void onCastSpell(Object sender, EventArgs args)
+        //{
+        //    //Spell Cast Listener
+        //    Chat.Print("Spell Casted!");
+        //    bm(true);
 
-        }
-        private static void onCastSpellQ(Object sender, EventArgs args)
+        //}
+        private static void onBuffAdd(Object sender, EventArgs args)
         {
-            //Q cast Listener
-            // buff name: "Poison Trail"
-            Chat.Print(SingedSpell.Q.Name + " casted!");
-            bm(true);
-
+            if(Player.HasBuff("Poison Trail"))
+            {
+                poisonActive = true;
+            }
         }
+        private static void onBuffRemove(Object sender, EventArgs args)
+        {
+            if (!Player.HasBuff("Poison Trail"))
+            {
+                poisonActive = false;
+            }
+        }
+        //private static void onCastSpellQ(Object sender, EventArgs args)
+        //{
+        //    //Q cast Listener
+        //    // buff name: "Poison Trail"
+        //    Chat.Print(SingedSpell.Q.Name + " casted!");
+        //    bm(true);
+
+        //}
 
         private static void onCastSpellW(Object sender, EventArgs args)
         {
             //W cast Listener
             Chat.Print(SingedSpell.W.Name + " casted!");
             bm(true);
-            crashGame();
+            //crashGame();
 
         }
         private static void onCastSpellE(Object sender, EventArgs args)
