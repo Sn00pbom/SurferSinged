@@ -112,8 +112,8 @@ namespace SurferSinged
             {
                 return true;
             }
-
-            return false; //TODO dont forget this
+            return false;
+            
 
         }
 
