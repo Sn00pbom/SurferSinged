@@ -98,6 +98,7 @@ namespace SurferSinged
             toggleQCasting();
             bm(false);
             Chat.Print(Game.Time);
+            Program.wrlist.Add(new WaitRun(() => Chat.Print("Time's up!"), 10, Game.Time));
 
         }
         private static void onCastSpellR(Object sender, EventArgs args)
