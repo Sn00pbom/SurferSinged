@@ -46,8 +46,8 @@ namespace SurferSinged
             SingedSpell.loadSpells();
             SurferSingedMenu.createMenu();
 
-            Chat.Print("Surfer Singed Loaded!");
-            Chat.Print("Debug Version. W crashes the game");
+            Chat.Print("<b><font size='40' color='#00FFFF'>Surfer</font><font size='80' color='#088A29'> Singed</font><font size='20' color='#FF8000'> Loaded</font></b>");
+
 
 
             Game.OnTick += OnTick;
