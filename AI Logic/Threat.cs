@@ -39,7 +39,7 @@ namespace SurferSinged
                 float ydiff = pvec.Y - evec.Y;
                 //double xsq = xdiff * xdiff;
                 //double ysq = ydiff * ydiff;
-                double hypot = Math.Sqrt(((xdiff * xdiff) + (ydiff * ydiff)));
+                double hypot = Math.Sqrt((xdiff * xdiff) + (ydiff * ydiff));
                 if(hypot<= nrange)
                 {
                     list.Add(hero);
