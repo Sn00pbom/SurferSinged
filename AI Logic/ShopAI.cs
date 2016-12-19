@@ -33,11 +33,12 @@ namespace SurferSinged.AI_Logic
         {
             
             TargetSelector.GetTarget(700, DamageType.Physical);
-
+            return 1;
         }
         public void nextItem()
         {
-
+            
         }
+        
     }
 }
