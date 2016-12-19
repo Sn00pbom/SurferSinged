@@ -73,7 +73,11 @@ namespace SurferSinged
 
 
             WaitRun.updateTick(wrlist, Game.Time);
-            
+            List<AIHeroClient> enemiesinrange = Threat.getEnemiesInRange(1000);
+            for (int i = 0; i< enemiesinrange.Count; i++)
+            {
+                Chat.Print(enemiesinrange[i].ChampionName.ToString());
+            }
 
 
         }

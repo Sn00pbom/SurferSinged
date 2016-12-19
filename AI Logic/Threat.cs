@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EloBuddy;
+using EloBuddy.SDK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,10 +18,36 @@ namespace SurferSinged
             HIGH,
             HIGHEST
         }
+        public static AIHeroClient Me => Player.Instance;
+
         public static Level currentThreat = Level.HIGHEST; //initializing as highest, change this if you have another idea
         public static Level analyzeThreat()
         {
-            return Level.HIGHEST;
+            //Me.CountEnemiesInRange;
+            return Level.HIGH;
+        }
+        public static List<AIHeroClient> getEnemiesInRange(uint range) //returns all enemies within range
+        {
+            foreach (AIHeroClient hero in EntityManager.Heroes.Enemies)
+            {
+                double nrange = (double)range;
+                SharpDX.Vector3 pvec = Me.ServerPosition; //player vector
+                SharpDX.Vector3 evec = hero.Position; //enemy vector
+                List<AIHeroClient> list = new List<AIHeroClient>();
+                //compare vectors and use pythagorean theorum for distance.
+                float xdiff = pvec.X - evec.X;
+                float ydiff = pvec.Y - evec.Y;
+                //double xsq = xdiff * xdiff;
+                //double ysq = ydiff * ydiff;
+                double hypot = Math.Sqrt(((xdiff * xdiff) + (ydiff * ydiff)));
+                if(hypot<= nrange)
+                {
+                    list.Add(hero);
+                }
+
+            }
+            return null;
         }
     }
 }
+
