@@ -66,7 +66,7 @@ namespace SurferSinged
 
             WaitRun.updateTick(wrlist, Game.Time);
 
-            List<AIHeroClient> enemiesInRange = Threat.getEnemiesInRange(10000);
+            List<AIHeroClient> enemiesInRange = Threat.getEnemiesInRange(100);
             if(enemiesInRange != null)
             {
                 for (int i = 0; i < enemiesInRange.Count; i++)
