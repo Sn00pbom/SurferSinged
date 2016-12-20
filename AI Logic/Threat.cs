@@ -31,13 +31,14 @@ namespace SurferSinged
         }
         public static List<AIHeroClient> getEnemiesInRange(uint range) //returns all enemies within range
         {
+            List<AIHeroClient> list = new List<AIHeroClient>();
             foreach (AIHeroClient hero in EntityManager.Heroes.Enemies)
             {
                 
                 //double nrange = (double)range;
                 SharpDX.Vector3 pvec = Me.ServerPosition; //player vector
                 SharpDX.Vector3 evec = hero.Position; //enemy vector
-                List<AIHeroClient> list = new List<AIHeroClient>();
+                
                 //compare vectors and use pythagorean theorum for distance.
                 float xdiff = pvec.X - evec.X;
                 float ydiff = pvec.Y - evec.Y;
@@ -50,9 +51,9 @@ namespace SurferSinged
                     //Chat.Print("db");
                     list.Add(hero);
                 }
-                return list;
+                
             }
-            return null;
+            return list;
         }
     }
 }
