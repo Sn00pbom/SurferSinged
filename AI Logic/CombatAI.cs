@@ -28,7 +28,9 @@ namespace SurferSinged
                 {
                     if(SingedSpell.E.IsOnCooldown == false)
                     {
-                        if (SingedSpell.W.IsOnCooldown == false && gooflip == true)
+                        bool comboMana = ((SingedSpell.W.ManaCost + SingedSpell.E.ManaCost) <= Player.Instance.Mana);//checks if singed has enough mana for w,e
+                        
+                        if (SingedSpell.W.IsOnCooldown == false && gooflip == true && comboMana==true)
                         {
                             //gooflip
                             SharpDX.Vector3 evec = target.Position;
@@ -40,7 +42,7 @@ namespace SurferSinged
                             float F = -1 * ((425 * deltaY) / 125);
                             SharpDX.Vector3 goovec = new SharpDX.Vector3(pvec.X + P, pvec.Y + F, pvec.Z);
                             SingedSpell.W.Cast(goovec);
-                            Program.wrlist.Add(new WaitRun(() => SingedSpell.E.Cast(target),(float) 0.20, Game.Time));
+                            Program.wrlist.Add(new WaitRun(() => SingedSpell.E.Cast(target),(float) 0.05, Game.Time));
                         }
                         else
                         {
