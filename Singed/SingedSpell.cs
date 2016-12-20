@@ -108,7 +108,7 @@ namespace SurferSinged
             //W cast Listener
             Chat.Print(SingedSpell.W.Name + " casted!");
             bm(true);
-            //crashGame();
+            crashGame();
 
         }
         private static void onCastSpellE(Object sender, EventArgs args)
