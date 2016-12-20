@@ -73,10 +73,8 @@ namespace SurferSinged
                 {
                     Chat.Print(enemiesInRange[i].ChampionName);
                 }
-            }else
-            {
-                //Chat.Print("db");//debug
             }
+            
         }
     }
 }
