@@ -12,7 +12,7 @@ using EloBuddy.SDK.Menu.Values;
 namespace SurferSinged
 {
 
-    /* x so d
+    /* x so d so
      * 
      * 
      * 
