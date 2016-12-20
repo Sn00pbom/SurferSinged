@@ -33,7 +33,7 @@ namespace SurferSinged
         {
             foreach (AIHeroClient hero in EntityManager.Heroes.Enemies)
             {
-                
+                Chat.Print(hero.ChampionName);
                 //double nrange = (double)range;
                 SharpDX.Vector3 pvec = Me.ServerPosition; //player vector
                 SharpDX.Vector3 evec = hero.Position; //enemy vector
@@ -47,6 +47,7 @@ namespace SurferSinged
                 int hypot1 = (int)hypot;
                 if(hypot1<= range)
                 {
+                    //Chat.Print("db");
                     list.Add(hero);
                 }
 

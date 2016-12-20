@@ -66,16 +66,16 @@ namespace SurferSinged
 
             WaitRun.updateTick(wrlist, Game.Time);
 
-            List<AIHeroClient> enemiesinrange = Threat.getEnemiesInRange(10000);
-            if(enemiesinrange != null)
+            List<AIHeroClient> enemiesInRange = Threat.getEnemiesInRange(10000);
+            if(enemiesInRange != null)
             {
-                for (int i = 0; i < enemiesinrange.Count; i++)
+                for (int i = 0; i < enemiesInRange.Count; i++)
                 {
-                    Chat.Print(enemiesinrange[i].ChampionName);
+                    Chat.Print(enemiesInRange[i].ChampionName);
                 }
             }else
             {
-                Chat.Print("db");//debug
+                //Chat.Print("db");//debug
             }
         }
     }
