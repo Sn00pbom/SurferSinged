@@ -45,6 +45,7 @@ namespace SurferSinged
             Chat.Print("<b><font size='40' color='#00FFFF'>Surfer</font><font size='80' color='#088A29'> Singed</font><font size='20' color='#FF8000'> Loaded</font></b>");
 
             Game.OnTick += OnTick;
+            Game.OnTick += CombatAI.OnTick;
         }
 
 
@@ -66,17 +67,8 @@ namespace SurferSinged
 
             WaitRun.updateTick(wrlist, Game.Time);
 
-            List<AIHeroClient> enemiesinrange = Threat.getEnemiesInRange(10000);
-            if(enemiesinrange != null)
-            {
-                for (int i = 0; i < enemiesinrange.Count; i++)
-                {
-                    Chat.Print(enemiesinrange[i].ChampionName);
-                }
-            }else
-            {
-                Chat.Print("db");//debug
-            }
+            
+            
         }
     }
 }

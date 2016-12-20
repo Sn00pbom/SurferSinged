@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI Logic\CombatAI.cs" />
     <Compile Include="AI Logic\ShopAI.cs" />
     <Compile Include="AI Logic\Threat.cs" />
     <Compile Include="Program.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Singed\SingedSpell.cs" />
     <Compile Include="SurferSingedMenu.cs" />
     <Compile Include="Util\LinearEquation.cs" />
+    <Compile Include="Util\Sort.cs" />
     <Compile Include="Util\WaitRun.cs" />
   </ItemGroup>
   <ItemGroup>
