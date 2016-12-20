@@ -12,10 +12,7 @@ using EloBuddy.SDK.Menu.Values;
 namespace SurferSinged
 {
 
-    /*
-     * 
-     * 
-     * TODO LIST:
+    /* TODO LIST:
      * debug and test automated spells, primarily fling
      * test summoner spells (ESPECIALLY TELE)
      * TEST AUTOLAUGH AND MASTERY FROM SingedSpell Class
@@ -47,14 +44,10 @@ namespace SurferSinged
 
             Chat.Print("<b><font size='40' color='#00FFFF'>Surfer</font><font size='80' color='#088A29'> Singed</font><font size='20' color='#FF8000'> Loaded</font></b>");
 
-
-
             Game.OnTick += OnTick;
-            
-
-            
-
         }
+
+
         private static void OnTick(EventArgs args)
         {
             //recall debug
@@ -84,11 +77,6 @@ namespace SurferSinged
             {
                 Chat.Print("db");//debug
             }
-            
-
-
         }
-        
-        
     }
 }
