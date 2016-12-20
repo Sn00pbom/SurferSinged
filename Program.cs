@@ -12,8 +12,7 @@ using EloBuddy.SDK.Menu.Values;
 namespace SurferSinged
 {
 
-    /* x so d so
-     * this is gayyyyyyyyyyyyyyyyyyyyyyyy
+    /*
      * 
      * 
      * TODO LIST:
