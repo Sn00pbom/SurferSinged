@@ -40,13 +40,10 @@ namespace SurferSinged
                 SharpDX.Vector3 evec = hero.Position; //enemy vector
                 
                 //compare vectors and use pythagorean theorum for distance.
-                float xdiff = pvec.X - evec.X;
-                float ydiff = pvec.Y - evec.Y;
+                
                 //double xsq = xdiff * xdiff;
                 //double ysq = ydiff * ydiff;
-                double hypot = Math.Sqrt((xdiff * xdiff) + (ydiff * ydiff));
-                int hypot1 = (int)hypot;
-                if(hypot1<= range)
+                if(getDistanceBetween(pvec,evec)<= range)
                 {
                     //Chat.Print("db");
                     list.Add(hero);
@@ -54,6 +51,12 @@ namespace SurferSinged
                 
             }
             return list;
+        }
+        public static double getDistanceBetween(SharpDX.Vector3 vec1, SharpDX.Vector3 vec2)
+        {
+            float xdiff = vec1.X - vec2.X;
+            float ydiff = vec1.Y - vec1.Y;
+            return Math.Sqrt((xdiff * xdiff) + (ydiff * ydiff));
         }
     }
 }
