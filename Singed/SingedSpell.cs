@@ -27,12 +27,22 @@ namespace SurferSinged
             //Initialize spell references and listeners
             Q = new Spell.Active(SpellSlot.Q);
             R = new Spell.Active(SpellSlot.R);
-            S1 = new Spell.Active(SpellSlot.Summoner1);
+            //S1 = new Spell.Active(SpellSlot.Summoner1);
             W = new Spell.SimpleSkillshot(SpellSlot.W);
             E = new Spell.Targeted(SpellSlot.E, 125); //125 is singed fling range
             S2 = new Spell.Targeted(SpellSlot.Summoner2, 1000000000); //Teleport: hopefully this range is large enough to be global Kappa
-
             
+
+            if(S1.Name == "Ghost")
+            {
+                Program.wrlist.Add(new WaitRun(() => Chat.Say("I, Singed, have Ghost!"), 5, Game.Time));
+                
+            }
+            if(S2.Name == "Teleport")
+            {
+                Program.wrlist.Add(new WaitRun(() => Chat.Say("I, Singed, have Teleport!"), (float)5.5, Game.Time));
+                
+            }
             //Spellbook.OnCastSpell += onCastSpell;
             //Q.OnSpellCasted += onCastSpellQ;
             W.OnSpellCasted += onCastSpellW;
