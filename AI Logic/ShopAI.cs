@@ -32,39 +32,63 @@ namespace SurferSinged.AI_Logic
 
     class ShopAI
     {
+        /* Each game-item will have a corresponding list of all of sub-items. These lists will be called in a specific order, creating our build path.
+         * A list will be called at the beginning of the game, and upon the completion of each item, it will call a method to evaluate what item to build next
+         * 
+         * A method will evaluate what item (build list) is needed, then this list will be sent to our purchaser
+         * 
+         * Create a 2D list buildPath which is full of itemPaths. This will be overwritten by the evaluate build method
+         * 
+         * PURCHASE LOGIC
+         * 
+         * private static shop(itemList, singedGold) { 
+         *      if (goldAmount > itemList(0).cost) {
+         *          BUY ITEM
+         *      } else {
+         *      PRINT "Singed needs + ITEMPRICE + more gold to buy + ITEM"
+         *      }
+         * }
+         */
 
         public static AIHeroClient Me = Player.Instance;
         public static AIHeroClient Target;
         private float gold = Me.Gold;
+
         public float getGold()
         {
             gold = Me.Gold;
             return gold;
         }
-        public bool hasItem(ItemId item)//returns true/false if user has itemID in their inventory
+
+        //public bool hasItem(ItemId item)//returns true/false if user has itemID in their inventory
+        //{
+        //    if (Me.HasItem(item))
+        //    {
+        //        return true;
+        //    }else
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        //public int numItem(ItemId item) //returns number of item in user inv
+        //{
+        //    TargetSelector.GetTarget(700, DamageType.Physical);
+        //    return 1;
+        //}
+
+        public void setActiveList() //The active list is a list of lists. The sub-lists will contain the componants of building a completed item. The active list will contain an entire full build, and will be modified under certain conditions
         {
-            if (Me.HasItem(item))
-            {
-                return true;
-            }else
-            {
-                return false;
-            }
+
         }
-        public int numItem(ItemId item)//returns number of item in user inv
+
+        public void buyItem(ItemId item) //Attempts to buy an item 
         {
-            TargetSelector.GetTarget(700, DamageType.Physical);
-            return 1;
+
         }
-        public void nextItem()
-        {
-            
-        }
+
+
         
     }
 
-    class EvaluateTeams
-    {
-        //Pull 
-    }
 }
