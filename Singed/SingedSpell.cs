@@ -27,7 +27,7 @@ namespace SurferSinged
             //Initialize spell references and listeners
             Q = new Spell.Active(SpellSlot.Q);
             R = new Spell.Active(SpellSlot.R);
-            //S1 = new Spell.Active(SpellSlot.Summoner1);
+            S1 = new Spell.Active(SpellSlot.Summoner1);
             W = new Spell.SimpleSkillshot(SpellSlot.W);
             E = new Spell.Targeted(SpellSlot.E, 125); //125 is singed fling range
             S2 = new Spell.Targeted(SpellSlot.Summoner2, 1000000000); //Teleport: hopefully this range is large enough to be global Kappa
@@ -44,7 +44,7 @@ namespace SurferSinged
                 
             }
             //Spellbook.OnCastSpell += onCastSpell;
-            //Q.OnSpellCasted += onCastSpellQ;
+            //Q.OnSpellCasted += onCastSpellQ; commented this because q is handled differently
             W.OnSpellCasted += onCastSpellW;
             E.OnSpellCasted += onCastSpellE;
             R.OnSpellCasted += onCastSpellR;
